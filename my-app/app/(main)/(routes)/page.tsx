@@ -2,7 +2,7 @@
 import {
   UserButton,
 } from "@clerk/nextjs";
-import { ModeToggle } from "@/components/ui/mode-toggle-ui";
+import { ModeToggle } from "@/components/ui/mode-toggle";
 export default function Home() {
   return (
 <div className="flex flex-col justify-center items-center">

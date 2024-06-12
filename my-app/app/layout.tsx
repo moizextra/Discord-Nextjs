@@ -22,15 +22,14 @@ export default function RootLayout({
     <ClerkProvider>
     <html lang="en" suppressHydrationWarning>
       <body className={font.className}>
-        <ThemeProvider
-        attribute="class"
-        defaultTheme="dark"
-        forcedTheme="light"
-        storageKey="theme"
-        enableSystem={true}
-        >
-        {children}
-        </ThemeProvider>
+      <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            {children}
+          </ThemeProvider>
         </body>
     </html>
     </ClerkProvider>
