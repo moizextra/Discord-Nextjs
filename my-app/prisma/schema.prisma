@@ -1,18 +1,10 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
 }
 
 datasource db {
-  provider  = "postgresql"
-  url       = env("DATABASE_URL")
-  // uncomment next line if you use Prisma <5.10
-  // directUrl = env("DATABASE_URL_UNPOOLED")
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
 }
 
 model Profile {
@@ -21,13 +13,11 @@ model Profile {
   name      String
   imageUrl  String   @db.Text
   email     String   @db.Text
-
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   servers   Server[]
   members   Member[]
-  channels Channel[]
-
+  channels  Channel[]
 }
 
 model Server {
@@ -37,13 +27,10 @@ model Server {
   inviteCode String   @db.Text
   members    Member[]
   channels   Channel[]
-
   createdAt  DateTime @default(now())
   updatedAt  DateTime @updatedAt
-
   profileId  String
   profile    Profile  @relation(fields: [profileId], references: [id], onDelete: Cascade)
-  
   @@index([profileId])
 }
 
@@ -54,17 +41,14 @@ enum Roles {
 }
 
 model Member {
-  id         String   @id @default(uuid())
-  role       Roles    @default(Guest)
-  profileId  String
-  profile    Profile  @relation(fields: [profileId], references: [id], onDelete: Cascade)
-
-  serverId   String
-  server     Server   @relation(fields: [serverId], references: [id], onDelete: Cascade)
-
-  createdAt  DateTime @default(now())
-  updatedAt  DateTime @updatedAt
-
+  id        String   @id @default(uuid())
+  role      Roles    @default(Guest)
+  profileId String
+  profile   Profile  @relation(fields: [profileId], references: [id], onDelete: Cascade)
+  serverId  String
+  server    Server   @relation(fields: [serverId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
   @@index([profileId])
   @@index([serverId])
 }
@@ -76,19 +60,15 @@ enum ChannelTypes {
 }
 
 model Channel {
-  id         String       @id @default(uuid())
-  name       String
-  type       ChannelTypes @default(Text)
-
-  profileId  String
-  profile    Profile      @relation(fields: [profileId], references: [id])
-
-  serverId   String
-  server     Server       @relation(fields: [serverId], references: [id], onDelete: Cascade)
-
-  createdAt  DateTime     @default(now())
-  updatedAt  DateTime     @updatedAt
-
+  id        String       @id @default(uuid())
+  name      String
+  type      ChannelTypes @default(Text)
+  profileId String
+  profile   Profile      @relation(fields: [profileId], references: [id])
+  serverId  String
+  server    Server       @relation(fields: [serverId], references: [id], onDelete: Cascade)
+  createdAt DateTime     @default(now())
+  updatedAt DateTime     @updatedAt
   @@index([profileId])
   @@index([serverId])
 }
