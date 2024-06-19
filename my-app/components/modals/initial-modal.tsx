@@ -66,15 +66,14 @@ imageUrl: z.string().url({
             {/* Name field */}
             
             {/* Image URL field */}
-          <div className="flex flex-col gap-10">
+          <div className="flex  flex-col gap-10">
           <FormField
               control={form.control}
               name="imageUrl"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="flex justify-center">Image URL</FormLabel>
                <FormControl>
-                    <FileUpload/>
+                    <FileUpload  endpoint="serverImage" value={field.value} onChange={field.onChange}  />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
