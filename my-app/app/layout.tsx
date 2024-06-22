@@ -5,6 +5,7 @@ import {
   ClerkProvider,
 } from '@clerk/nextjs'
 import { ThemeProvider } from "@/components/ui/providers/theme-providers";
+import { ModalProvider } from "@/components/ui/providers/modal-provider";
 
 const font = Open_Sans({ subsets: ["latin"] });
 
@@ -28,6 +29,7 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
+            <ModalProvider/>
             {children}
           </ThemeProvider>
         </body>

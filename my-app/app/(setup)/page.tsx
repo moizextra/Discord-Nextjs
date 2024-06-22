@@ -20,11 +20,11 @@ const SetupPage = async() => {
 
   // if user is already part of server then redirect to that server
   if (server) {
-    return redirect(`/server/${server.id}`); // Added parentheses to redirect
+    return redirect(`/servers/${server.id}`); // Added parentheses to redirect
   }
 
   return (
-    <div><InitialModal/></div>
+  <InitialModal/>
   );
 };
 
