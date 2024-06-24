@@ -26,6 +26,7 @@ import {
 import { Input } from "@/components/ui/input";
 import FileUpload from "../ui/file-upload";
 import { use } from "react";
+import { on } from "events";
 
 const formSchema = z.object({
   name: z.string().min(3, {
@@ -56,6 +57,7 @@ const CreateServerModal = () => {
       await axios.post("/api/server", values);
       form.reset();
       router.refresh();
+      onClose();
     } catch {}
   };
 
