@@ -4,9 +4,9 @@ import { db } from "@/lib/db";
 import {redirectToSignIn } from "@clerk/nextjs/server";
 import { redirect } from 'next/navigation'
 
-const layout = ({children,params}:{children:React.ReactNode,params:{serverId:string}}) => {
+const layout = async({children,params}:{children:React.ReactNode,params:{serverId:string}}) => {
 
-    const profile = currentProfile();
+    const profile =  await currentProfile();
     if(!profile) return redirectToSignIn();
     const server= db.server.findUnique({
 where:{
