@@ -11,7 +11,7 @@ const SetupPage = async() => {
     where: {
       members: {
         some: {
-          profileId: profile.id, // Changed semicolon to comma
+          profileId: profile?.id, // Changed semicolon to comma
         }
       }
     }
