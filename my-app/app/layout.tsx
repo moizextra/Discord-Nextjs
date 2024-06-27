@@ -4,8 +4,8 @@ import "./globals.css";
 import {
   ClerkProvider,
 } from '@clerk/nextjs'
-import { ThemeProvider } from "@/components/ui/providers/theme-providers";
-import { ModalProvider } from "@/components/ui/providers/modal-provider";
+import { ThemeProvider } from "@/components/providers/theme-providers";
+import { ModalProvider } from "@/components/providers/modal-provider";
 
 const font = Open_Sans({ subsets: ["latin"] });
 
