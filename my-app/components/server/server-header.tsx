@@ -23,6 +23,13 @@ const ServerHeader = ({
     const handleInvite=()=>{
         onOpen.onOpen("Invite",{server})
     }
+    const handleServerSettings=()=>{
+        onOpen.onOpen("editServer",{server})
+    }
+    const handleManageMember=()=>{
+        onOpen.onOpen("members",{server})
+    }
+    
   return (
    <DropdownMenu>
     <DropdownMenuTrigger className="focus:outline-none" asChild>
@@ -39,14 +46,14 @@ const ServerHeader = ({
 
     )}
     { isAdmin && (
-        <DropdownMenuItem>
+        <DropdownMenuItem onClick={handleServerSettings}>
            Server Settings
            <Settings className="w-4 h-4 ml-auto"/>
         </DropdownMenuItem>
 
     )}
     { isModerator && (
-        <DropdownMenuItem>
+        <DropdownMenuItem onClick={handleManageMember}>
            Manage Members
            <User className="w-4 h-4 ml-auto"/>
         </DropdownMenuItem>
